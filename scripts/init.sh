@@ -16,9 +16,11 @@ echo installing rabbitmq...
 rpm -ivh /vagrant/rpm/rabbitmq-server-3.2.3-1.noarch.rpm
 echo done installing rabbitmq
 # copy .erlang.cookie
+mkdir /var/lib/rabbitmq
+chown rabbitmq:rabbitmq /var/lib/rabbitmq
 cp /vagrant/config/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie
 chmod 400 /var/lib/rabbitmq/.erlang.cookie
-chown rabbitmq:rabbitmq /var/lib/.erlang.cookie
+chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie
 # chmod scripts
 chmod u+x /vagrant/scripts/*.sh
 # start rabbitmq

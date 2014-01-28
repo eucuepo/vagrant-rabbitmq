@@ -1,20 +1,25 @@
 #!/bin/bash
-#download rpm if not present
-if [ ! -f /vagrant/rpm/kafka-0.8.0-9.x86_64.rpm ]; then
-    echo Downloading kafka...
-    wget http://poole.im/files/kafka-0.8.0-9.x86_64.rpm -P /vagrant/rpm/
-fi
+wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+yum -y install erlang
 
-if [ ! -f /vagrant/rpm/jdk-7u45-linux-x64.rpm ]; then
-    echo Downloading JDK rpm
-    wget -O /vagrant/rpm/jdk-7u45-linux-x64.rpm --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" "http://download.oracle.com/otn-pub/java/jdk/7u45-b18/jdk-7u45-linux-x64.rpm" 
+#download rpm if not present
+if [ ! -f /vagrant/rpm/rabbitmq-server-3.2.3-1.noarch.rpm ]; then
+    echo Downloading rabbitmq...
+    wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.2.3/rabbitmq-server-3.2.3-1.noarch.rpm -P /vagrant/rpm/
 fi
 
 #disabling iptables
 /etc/init.d/iptables stop
-echo installing jdk and kafka...
-rpm -ivh /vagrant/rpm/jdk-7u45-linux-x64.rpm
-rpm -ivh /vagrant/rpm/kafka-0.8.0-9.x86_64.rpm
-echo done installing jdk and kafka
+
+echo installing rabbitmq...
+rpm -ivh /vagrant/rpm/rabbitmq-server-3.2.3-1.noarch.rpm
+echo done installing rabbitmq
+# copy .erlang.cookie
+cp /vagrant/config/.erlang.cookie /var/lib/rabbitmq/.erlang.cookie
+chmod 400 /var/lib/rabbitmq/.erlang.cookie
+chown rabbitmq:rabbitmq /var/lib/.erlang.cookie
 # chmod scripts
 chmod u+x /vagrant/scripts/*.sh
+# start rabbitmq
+/sbin/service rabbitmq-server start

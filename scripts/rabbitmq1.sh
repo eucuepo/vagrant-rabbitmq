@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Start rabbitmq
-rabbitmq-server -detached
+#rabbitmq-server -detached

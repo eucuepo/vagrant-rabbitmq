@@ -25,7 +25,7 @@ To manually set the local /etc/host files, run:
 
 To start it up, just git clone this repo and execute ```vagrant up```. Takes a while the first time as it will download all required dependencies for you.
 
-RabbitMQ is installed on ```/usr/local/rabbitmq```
+RabbitMQ is installed on ```/usr/lib/rabbitmq```
 
 Let's test it!
 -------------------------

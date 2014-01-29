@@ -31,3 +31,16 @@ Let's test it!
 -------------------------
 
 Login to any host with ```vagrant/vagrant```.
+
+Execute:
+
+```$ sudo rabbitmqctl cluster_status```
+
+This will show the cluster status, it should be similar to:
+
+```
+Cluster status of node rabbit@rabbit1 ...
+[{nodes,[{disc,[rabbit@rabbit1,rabbit@rabbit3]},{ram,[rabbit@rabbit2]}]},
+ {running_nodes,[rabbit@rabbit3,rabbit@rabbit2,rabbit@rabbit1]}]
+...done.
+```

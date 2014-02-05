@@ -25,9 +25,22 @@ To manually set the local /etc/host files, run:
 
 To start it up, just git clone this repo and execute ```vagrant up```. Takes a while the first time as it will download all required dependencies for you.
 
-RabbitMQ is installed on ```/usr/local/rabbitmq```
+RabbitMQ is installed on ```/usr/lib/rabbitmq```
 
 Let's test it!
 -------------------------
 
 Login to any host with ```vagrant/vagrant```.
+
+Execute:
+
+```$ sudo rabbitmqctl cluster_status```
+
+This will show the cluster status, it should be similar to:
+
+```
+Cluster status of node rabbit@rabbit1 ...
+[{nodes,[{disc,[rabbit@rabbit1,rabbit@rabbit3]},{ram,[rabbit@rabbit2]}]},
+ {running_nodes,[rabbit@rabbit3,rabbit@rabbit2,rabbit@rabbit1]}]
+...done.
+```

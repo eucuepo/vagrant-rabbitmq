@@ -2,7 +2,10 @@
 yum -y install haproxy
 
 # copy haproxy cfg 
-mkdir /etc/haproxy
+if [ ! -d /etc/haproxy ]; then
+ mkdir /etc/haproxy
+fi
+
 cp /vagrant/config/haproxy.cfg /etc/haproxy/haproxy.cfg
 # copy haproxy log config
 cp /vagrant/config/haproxy.conf /etc/rsyslog.d/haproxy.conf

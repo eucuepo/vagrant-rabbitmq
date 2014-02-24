@@ -7,10 +7,14 @@ This configuration will start and provision 3 CentOS6 VMs.
 
 Each host is provisioned with Erlang and RabbitMQ
 
+There is another 
+
 Prerrequisites
 -------------------------
-* Vagrant
-* VirtualBox
+* [Vagrant](http://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/)
+* [Puppet](http://puppetlabs.com/)
+* [Librarian-puppet](http://librarian-puppet.com/)
 
 Setup
 -------------------------
@@ -23,7 +27,15 @@ To manually set the local /etc/host files, run:
 
 ```$ vagrant hostmanager```
 
-To start it up, just git clone this repo and execute ```vagrant up```. Takes a while the first time as it will download all required dependencies for you.
+Vagrant-cachier is a plugin that enables caching content for Vagrant boxes, to enable it execute:
+
+```$ vagrant plugin install vagrant-cachier```
+
+RabbitMQ puppet modules are needed for this installation, to download them execute:
+
+```$ librarian-puppet install```
+
+To start it up, git clone this repo and execute ```vagrant up```. Takes a while the first time as it will download all required dependencies for you.
 
 RabbitMQ is installed on ```/usr/lib/rabbitmq```
 
@@ -34,7 +46,7 @@ Login to any host with ```vagrant/vagrant```.
 
 Execute:
 
-```$ sudo rabbitmqctl cluster_status```
+```$ sudo /usr/sbin/rabbitmqctl cluster_status```
 
 This will show the cluster status, it should be similar to:
 

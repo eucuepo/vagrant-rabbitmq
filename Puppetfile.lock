@@ -1,0 +1,19 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    garethr/erlang (0.2.0)
+      puppetlabs/apt (>= 0.0.0)
+      puppetlabs/stdlib (>= 0.0.0)
+      stahnma/epel (>= 0.0.0)
+    puppetlabs/apt (1.4.1)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/rabbitmq (3.1.0)
+      garethr/erlang (>= 0.1.0)
+      puppetlabs/apt (>= 1.0.0)
+      puppetlabs/stdlib (>= 2.0.0)
+    puppetlabs/stdlib (4.1.0)
+    stahnma/epel (0.0.6)
+
+DEPENDENCIES
+  puppetlabs/rabbitmq (>= 0)
+

@@ -7,8 +7,6 @@ This configuration will start and provision 3 CentOS6 VMs.
 
 Each host is provisioned with Erlang and RabbitMQ
 
-There is another 
-
 Prerrequisites
 -------------------------
 * [Vagrant](http://www.vagrantup.com/)
